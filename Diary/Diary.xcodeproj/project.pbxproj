@@ -20,6 +20,8 @@
 		BE91F91622757E5B00DD384E /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91F91522757E5B00DD384E /* HomeCollectionViewController.swift */; };
 		BE91F91822757FC800DD384E /* HomeYearCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91F91722757FC800DD384E /* HomeYearCollectionViewCell.swift */; };
 		BE91F91A227583C500DD384E /* DiaryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91F919227583C500DD384E /* DiaryLayout.swift */; };
+		BE91F91C2275966000DD384E /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91F91B2275966000DD384E /* DiaryCell.swift */; };
+		BE91F91E2275977000DD384E /* DiaryYearCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91F91D2275977000DD384E /* DiaryYearCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		BE91F91522757E5B00DD384E /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		BE91F91722757FC800DD384E /* HomeYearCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYearCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE91F919227583C500DD384E /* DiaryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryLayout.swift; sourceTree = "<group>"; };
+		BE91F91B2275966000DD384E /* DiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
+		BE91F91D2275977000DD384E /* DiaryYearCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryYearCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 				BE91F91522757E5B00DD384E /* HomeCollectionViewController.swift */,
 				BE91F91722757FC800DD384E /* HomeYearCollectionViewCell.swift */,
 				BE91F919227583C500DD384E /* DiaryLayout.swift */,
+				BE91F91B2275966000DD384E /* DiaryCell.swift */,
+				BE91F91D2275977000DD384E /* DiaryYearCollectionViewController.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -285,11 +291,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE91F91422754F0600DD384E /* DiaryLabel.swift in Sources */,
+				BE91F91C2275966000DD384E /* DiaryCell.swift in Sources */,
 				BE7FBAAC2272DD5C0021F8AD /* Diary.xcdatamodeld in Sources */,
 				BE91F91622757E5B00DD384E /* HomeCollectionViewController.swift in Sources */,
 				BE91F91822757FC800DD384E /* HomeYearCollectionViewCell.swift in Sources */,
 				BE7FBAA42272DD5C0021F8AD /* AppDelegate.swift in Sources */,
 				BE91F91A227583C500DD384E /* DiaryLayout.swift in Sources */,
+				BE91F91E2275977000DD384E /* DiaryYearCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
