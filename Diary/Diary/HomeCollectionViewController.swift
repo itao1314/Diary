@@ -15,19 +15,11 @@ class HomeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.delegate = self;
+        
         let yearLayout = DiaryLayout()
         collectionView.setCollectionViewLayout(yearLayout, animated: false)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -54,4 +46,12 @@ class HomeCollectionViewController: UICollectionViewController {
         navigationController?.pushViewController(dvc, animated: true)
     }
 
+}
+
+extension HomeCollectionViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = DiaryAnimator()
+        animator.operation = operation
+        return animator
+    }
 }

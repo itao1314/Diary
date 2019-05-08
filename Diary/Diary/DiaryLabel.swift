@@ -16,12 +16,12 @@ class DiaryLabel: UILabel {
     
     var textAttributes: [NSAttributedString.Key: AnyObject]!
     
-    convenience init(fontName: String, labelText: String, fontSize: CGFloat, lineHeight: CGFloat) {
+    convenience init(fontName: String, labelText: String, fontSize: CGFloat, lineHeight: CGFloat, color: UIColor) {
         self.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         let font = UIFont(name: fontName, size: fontSize)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineHeight
-        textAttributes = [NSAttributedString.Key.font: font!, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        textAttributes = [NSAttributedString.Key.font: font!, NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let labelSize = sizeHeightWithText(labelText: labelText as NSString, fontSize: fontSize, textAttributedString: textAttributes)
         frame = CGRect(x: 0, y: 0, width: labelSize.width, height: labelSize.height)
         attributedText = NSAttributedString(string: labelText, attributes: textAttributes)
