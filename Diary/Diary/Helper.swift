@@ -8,6 +8,8 @@
 
 import UIKit
 
+let screenSize = UIScreen.main.bounds
+
 func diaryButtonWith(text: String, fontSize: CGFloat, width: CGFloat, normalImageName: String, highlightImageName: String ) -> UIButton {
     let button = UIButton(type: .custom)
     button.frame = CGRect(x: 0, y: 0, width: width, height: width)
@@ -20,4 +22,49 @@ func diaryButtonWith(text: String, fontSize: CGFloat, width: CGFloat, normalImag
     let attributedText = NSAttributedString(string: text, attributes: textAttributes)
     button.setAttributedTitle(attributedText, for: .normal)
     return button
+}
+
+func numberToChinese(_ number: Int) -> String {
+    let numbers = String(number)
+    var finalString = ""
+    for singleNumber in numbers {
+        let string = singleNumberToChinese(singleNumber)
+        finalString = "\(finalString)\(string)"
+    }
+    return finalString
+}
+
+func singleNumberToChinese(_ singleNumber: Character) -> String {
+    switch singleNumber {
+    case "0":
+        return "零"
+    case "1":
+        return "一"
+    case "2":
+        return "二"
+    case "3":
+        return "三"
+    case "4":
+        return "四"
+    case "5":
+        return "五"
+    case "6":
+        return "六"
+    case "7":
+        return "七"
+    case "8":
+        return "八"
+    case "9":
+        return "九"
+    default:
+        return ""
+    }
+}
+
+extension Diary {
+    func updateTimeWithDate(_ date: Date){
+        self.created_at = date
+        self.year = Int32(Calendar.current.component(Calendar.Component.year, from: date))
+        self.month = Int32(Calendar.current.component(Calendar.Component.month, from: date))
+    }
 }

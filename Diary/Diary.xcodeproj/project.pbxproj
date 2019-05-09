@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE54D3622283B6AE007B2A60 /* DiaryComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54D3612283B6AE007B2A60 /* DiaryComposeViewController.swift */; };
+		BE54D3642283CF66007B2A60 /* DiaryLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54D3632283CF66007B2A60 /* DiaryLocationHelper.swift */; };
 		BE7FBAA42272DD5C0021F8AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FBAA32272DD5C0021F8AD /* AppDelegate.swift */; };
 		BE7FBAA92272DD5C0021F8AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7FBAA72272DD5C0021F8AD /* Main.storyboard */; };
 		BE7FBAAC2272DD5C0021F8AD /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE7FBAAA2272DD5C0021F8AD /* Diary.xcdatamodeld */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE54D3612283B6AE007B2A60 /* DiaryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryComposeViewController.swift; sourceTree = "<group>"; };
+		BE54D3632283CF66007B2A60 /* DiaryLocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryLocationHelper.swift; sourceTree = "<group>"; };
 		BE7FBAA02272DD5C0021F8AD /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7FBAA32272DD5C0021F8AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE7FBAA82272DD5C0021F8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 				BEB48B3B2282BE1B00D5A1A8 /* DiaryMonthCollectionViewController.swift */,
 				BEB48B3D2282C77A00D5A1A8 /* Helper.swift */,
 				BEB48B3F2282CF2B00D5A1A8 /* DiaryAnimator.swift */,
+				BE54D3612283B6AE007B2A60 /* DiaryComposeViewController.swift */,
+				BE54D3632283CF66007B2A60 /* DiaryLocationHelper.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -302,9 +308,11 @@
 				BE91F91422754F0600DD384E /* DiaryLabel.swift in Sources */,
 				BE91F91C2275966000DD384E /* DiaryCell.swift in Sources */,
 				BE7FBAAC2272DD5C0021F8AD /* Diary.xcdatamodeld in Sources */,
+				BE54D3642283CF66007B2A60 /* DiaryLocationHelper.swift in Sources */,
 				BE91F91622757E5B00DD384E /* HomeCollectionViewController.swift in Sources */,
 				BE91F91822757FC800DD384E /* HomeYearCollectionViewCell.swift in Sources */,
 				BEB48B3C2282BE1B00D5A1A8 /* DiaryMonthCollectionViewController.swift in Sources */,
+				BE54D3622283B6AE007B2A60 /* DiaryComposeViewController.swift in Sources */,
 				BE7FBAA42272DD5C0021F8AD /* AppDelegate.swift in Sources */,
 				BEB48B3E2282C77A00D5A1A8 /* Helper.swift in Sources */,
 				BE91F91A227583C500DD384E /* DiaryLayout.swift in Sources */,

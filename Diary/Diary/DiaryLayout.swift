@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let screenSize = UIScreen.main.bounds
+
 
 class DiaryLayout: UICollectionViewFlowLayout {
     override func prepare() {

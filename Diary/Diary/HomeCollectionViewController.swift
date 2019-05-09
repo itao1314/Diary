@@ -7,13 +7,40 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "HomeYearCollectionViewCell"
 
 class HomeCollectionViewController: UICollectionViewController {
-
+    
+    var diarys = [Diary]()
+    var fetchedResultsController: NSFetchedResultsController<Diary>!
+    var yearsCount = 1
+    var sectionsCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            let fetchRequest = NSFetchRequest<Diary>(entityName: "Diary")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "created_at", ascending: true)]
+            fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: "year", cacheName: nil)
+            try fetchedResultsController.performFetch()
+            if fetchedResultsController.fetchedObjects?.count == 0 {
+                print("没有存储结果")
+            } else {
+                if let sectionsCount = fetchedResultsController.sections?.count {
+                    yearsCount = sectionsCount
+                    diarys = fetchedResultsController.fetchedObjects!
+                } else {
+                    sectionsCount = 0
+                    yearsCount = 1
+                }
+            }
+        } catch let error as NSError {
+            print("发生错误:\(error.localizedDescription)")
+        }
+        
         
         self.navigationController?.delegate = self;
         
@@ -22,7 +49,7 @@ class HomeCollectionViewController: UICollectionViewController {
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return yearsCount
     }
 
 
@@ -33,8 +60,16 @@ class HomeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeYearCollectionViewCell
         
-        cell.textInt = 2015
-        cell.labelText = "二零一五 年"
+        let components = Calendar.current.component(Calendar.Component.year, from: Date())
+        var year = components
+        
+        if sectionsCount > 0 {
+            let sectionInfo = fetchedResultsController.sections![indexPath.section]
+            year = Int(sectionInfo.name)!
+        }
+        
+        cell.textInt = year
+        cell.labelText = "\(numberToChinese(cell.textInt)) 年"
         
         return cell
     }
@@ -42,7 +77,14 @@ class HomeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let identifier = "DiaryYearCollectionViewController"
         let dvc = storyboard?.instantiateViewController(withIdentifier: identifier) as! DiaryYearCollectionViewController
-        dvc.year = 2015
+        let components = Calendar.current.component(Calendar.Component.year, from: Date())
+        var year = components
+        if sectionsCount > 0 {
+            let sectionInfo = fetchedResultsController.sections![(indexPath as NSIndexPath).row]
+            print("Section info \(sectionInfo.name)")
+            year = Int(sectionInfo.name)!
+        }
+        dvc.year = year
         navigationController?.pushViewController(dvc, animated: true)
     }
 

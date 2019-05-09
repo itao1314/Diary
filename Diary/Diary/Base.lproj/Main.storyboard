@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -111,6 +112,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uo1-T8-40n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1312" y="113"/>
+        </scene>
+        <!--Diary Compose View Controller-->
+        <scene sceneID="hHp-bx-6EM">
+            <objects>
+                <viewController storyboardIdentifier="DiaryComposeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RzQ-M1-qyc" customClass="DiaryComposeViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pco-cm-bHX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ANJ-MT-l4x"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1tK-1O-lv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1980" y="113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vWl-LI-myp">

@@ -50,6 +50,8 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
     }
     
     @objc func newCompose() {
+        let dvc = self.storyboard?.instantiateViewController(withIdentifier: "DiaryComposeViewController") as! DiaryComposeViewController
+        self.present(dvc, animated: true, completion: nil)
         
     }
     
