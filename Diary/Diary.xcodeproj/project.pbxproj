@@ -27,6 +27,8 @@
 		BEB48B3C2282BE1B00D5A1A8 /* DiaryMonthCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB48B3B2282BE1B00D5A1A8 /* DiaryMonthCollectionViewController.swift */; };
 		BEB48B3E2282C77A00D5A1A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB48B3D2282C77A00D5A1A8 /* Helper.swift */; };
 		BEB48B402282CF2B00D5A1A8 /* DiaryAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB48B3F2282CF2B00D5A1A8 /* DiaryAnimator.swift */; };
+		BEE309132285572300A91B20 /* DiaryTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = BEE309122285572300A91B20 /* DiaryTemplate.html */; };
+		BEE309152285577F00A91B20 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE309142285577F00A91B20 /* DiaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		BEB48B3B2282BE1B00D5A1A8 /* DiaryMonthCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMonthCollectionViewController.swift; sourceTree = "<group>"; };
 		BEB48B3D2282C77A00D5A1A8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		BEB48B3F2282CF2B00D5A1A8 /* DiaryAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAnimator.swift; sourceTree = "<group>"; };
+		BEE309122285572300A91B20 /* DiaryTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DiaryTemplate.html; sourceTree = "<group>"; };
+		BEE309142285577F00A91B20 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				BEB48B3F2282CF2B00D5A1A8 /* DiaryAnimator.swift */,
 				BE54D3612283B6AE007B2A60 /* DiaryComposeViewController.swift */,
 				BE54D3632283CF66007B2A60 /* DiaryLocationHelper.swift */,
+				BEE309122285572300A91B20 /* DiaryTemplate.html */,
+				BEE309142285577F00A91B20 /* DiaryViewController.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			files = (
 				BE7FBAB12272DD740021F8AD /* LaunchScreen.storyboard in Resources */,
 				BE7FBAD72272E4AD0021F8AD /* TpldKhangXiDictTrial.otf in Resources */,
+				BEE309132285572300A91B20 /* DiaryTemplate.html in Resources */,
 				BE7FBAAE2272DD740021F8AD /* Assets.xcassets in Resources */,
 				BE7FBAA92272DD5C0021F8AD /* Main.storyboard in Resources */,
 				BE7FBAD82272E4AD0021F8AD /* Wyue-GutiFangsong-NC_deliverable.otf in Resources */,
@@ -315,6 +322,7 @@
 				BE54D3622283B6AE007B2A60 /* DiaryComposeViewController.swift in Sources */,
 				BE7FBAA42272DD5C0021F8AD /* AppDelegate.swift in Sources */,
 				BEB48B3E2282C77A00D5A1A8 /* Helper.swift in Sources */,
+				BEE309152285577F00A91B20 /* DiaryViewController.swift in Sources */,
 				BE91F91A227583C500DD384E /* DiaryLayout.swift in Sources */,
 				BEB48B402282CF2B00D5A1A8 /* DiaryAnimator.swift in Sources */,
 				BE91F91E2275977000DD384E /* DiaryYearCollectionViewController.swift in Sources */,

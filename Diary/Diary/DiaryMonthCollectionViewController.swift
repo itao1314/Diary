@@ -93,4 +93,13 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let identifier = "DiaryViewController"
+        let dvc = self.storyboard?.instantiateViewController(withIdentifier: identifier) as! DiaryViewController
+        
+        dvc.diary = diarys[indexPath.row]
+        
+        self.navigationController?.pushViewController(dvc, animated: true)
+    }
+    
 }

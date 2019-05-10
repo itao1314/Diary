@@ -128,6 +128,21 @@
             </objects>
             <point key="canvasLocation" x="1980" y="113"/>
         </scene>
+        <!--Diary View Controller-->
+        <scene sceneID="WOW-sB-4Pr">
+            <objects>
+                <viewController storyboardIdentifier="DiaryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ujq-bq-564" customClass="DiaryViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2yF-rz-hgW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VFb-UB-DlW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhY-GZ-GsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2690" y="113"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="vWl-LI-myp">
             <objects>
