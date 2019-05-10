@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "DiaryCell"
 
@@ -16,9 +17,15 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
     
     var month: Int!
     
+    var year: Int!
+    
     var yearLabel: DiaryLabel!
     
     var monthLabel: DiaryLabel!
+    
+    var fetchedResultsController: NSFetchedResultsController<Diary>!
+    
+    var diarys = [Diary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +48,27 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
         let composeButton = diaryButtonWith(text: "撰", fontSize: 14, width: 40, normalImageName: "Oval", highlightImageName: "Oval_pressed")
         
         composeButton.center = CGPoint(x: yearLabel.center.x,
-                                          y: 38 + yearLabel.frame.size.height + 36.0/2.0)
+                                       y: 38 + yearLabel.frame.size.height + 36.0/2.0)
         
         composeButton.addTarget(self, action: #selector(newCompose),
                                 for: UIControl.Event.touchUpInside)
         
         self.view.addSubview(composeButton)
+        
+        do {
+            let fetchRequest = NSFetchRequest<Diary>(entityName: "Diary")
+            fetchRequest.predicate = NSPredicate(format: "year = \(year!) AND month = \(month!)")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "created_at", ascending: true)]
+            fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+            try fetchedResultsController.performFetch()
+            if fetchedResultsController.sections?.count == 0 {
+                print("没有存储结果")
+            } else {
+                diarys = fetchedResultsController.fetchedObjects!
+            }
+        } catch let error as NSError {
+            print("发现错误 \(error.localizedDescription)")
+        }
     }
     
     @objc func newCompose() {
@@ -61,13 +83,13 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return diarys.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DiaryCell
-        cell.textInt = 1
-        cell.labelText = "一月"
+        let diary = diarys[indexPath.row]
+        cell.labelText = diary.title!
         return cell
     }
     
