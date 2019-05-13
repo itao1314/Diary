@@ -60,6 +60,7 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
             fetchRequest.predicate = NSPredicate(format: "year = \(year!) AND month = \(month!)")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "created_at", ascending: true)]
             fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+            fetchedResultsController.delegate = self
             try fetchedResultsController.performFetch()
             if fetchedResultsController.sections?.count == 0 {
                 print("没有存储结果")
@@ -102,4 +103,13 @@ class DiaryMonthCollectionViewController: UICollectionViewController {
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
+}
+
+extension DiaryMonthCollectionViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        diarys = controller.fetchedObjects! as! [Diary]
+        self.collectionView.reloadData()
+    
+        collectionView.setCollectionViewLayout(DiaryLayout(), animated: false)
+    }
 }

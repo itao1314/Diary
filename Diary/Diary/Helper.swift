@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 let screenSize = UIScreen.main.bounds
 
@@ -90,5 +91,23 @@ extension Diary {
         self.created_at = date
         self.year = Int32(Calendar.current.component(Calendar.Component.year, from: date))
         self.month = Int32(Calendar.current.component(Calendar.Component.month, from: date))
+    }
+}
+
+extension WKWebView {
+    func captureView() -> UIImage {
+        let tmpFrame = self.frame
+        var aFrame = self.frame
+        
+        aFrame.size.width = self.sizeThatFits(UIScreen.main.bounds.size).width
+        self.frame = aFrame
+        
+        UIGraphicsBeginImageContextWithOptions(self.sizeThatFits(UIScreen.main.bounds.size), false, UIScreen.main.scale)
+        let resizedContext = UIGraphicsGetCurrentContext()
+        self.layer.render(in: resizedContext!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.frame = tmpFrame
+        return image!
     }
 }

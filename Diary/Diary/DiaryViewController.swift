@@ -15,10 +15,20 @@ class DiaryViewController: UIViewController {
     
     var webView: WKWebView!
     
+    var saveButton: UIButton!
+    
+    var deleteButton: UIButton!
+    
+    var editButton: UIButton!
+    
+    var buttonsView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        
+        showButtons()
     }
     
     func setupUI() {
@@ -83,7 +93,91 @@ class DiaryViewController: UIViewController {
         }
         
         webView.loadHTMLString(contents as String, baseURL: nil)
+        
+        buttonsView = UIView()
+        buttonsView.frame = CGRect(x: 0, y: screenSize.height - 60, width: screenSize.width, height: 60)
+
+        buttonsView.alpha = 0;
+        view.addSubview(buttonsView)
+        
+        let buttonFontSize: CGFloat = 18.0
+        
+        saveButton = diaryButtonWith(text: "存", fontSize: buttonFontSize, width: 50, normalImageName: "Oval", highlightImageName: "Oval_pressed")
+        saveButton.center = CGPoint(x: buttonsView.frame.size.width / 2.0, y: buttonsView.frame.size.height / 2.0)
+        saveButton.addTarget(self, action: #selector(saveToRoll), for: .touchUpInside)
+        buttonsView.addSubview(saveButton)
+        
+        deleteButton = diaryButtonWith(text: "删", fontSize: buttonFontSize, width: 50, normalImageName: "Oval", highlightImageName: "Oval_pressed")
+        deleteButton.center = CGPoint(x: saveButton.center.x + 60, y: buttonsView.frame.size.height / 2.0)
+        buttonsView.addSubview(deleteButton)
+        
+        editButton = diaryButtonWith(text: "改", fontSize: buttonFontSize, width: 50, normalImageName: "Oval", highlightImageName: "Oval_pressed")
+        editButton.center = CGPoint(x: saveButton.center.x - 60, y: buttonsView.frame.size.height / 2.0)
+        editButton.addTarget(self, action: #selector(editDiary), for: .touchUpInside)
+        buttonsView.addSubview(editButton)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showButtons))
+        tap.delegate = self;
+        webView .addGestureRecognizer(tap)
     }
     
+    @objc func showButtons() {
+        if buttonsView.alpha == 0 {
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.buttonsView.center = CGPoint(x: self.buttonsView.center.x,
+                                                  y: screenSize.height - self.buttonsView.frame.size.height/2.0)
+                self.buttonsView.alpha = 1.0
+            }, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.1, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.buttonsView.center = CGPoint(x: self.buttonsView.center.x, y: screenSize.height + self.buttonsView.frame.size.height/2.0)
+                self.buttonsView.alpha = 0
+            }, completion: nil)
+        }
+    }
+    
+    @objc func editDiary() {
+        let identifier = "DiaryComposeViewController"
+        let dvc = self.storyboard?.instantiateViewController(withIdentifier: identifier) as! DiaryComposeViewController
+        
+        if let diary = diary {
+            dvc.diary = diary
+        }
+        
+        self.present(dvc, animated: true, completion: nil)
+    }
+    
+    @objc func saveToRoll() {
+        
+        let offSet = webView.scrollView.contentOffset.x
+        let image = webView.captureView()
+        webView.scrollView.contentOffset.x = offSet
+        
+        var sharingItems = [AnyObject]()
+        sharingItems.append(image)
+        
+        let activityController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceView = saveButton
+        self.present(activityController, animated: true, completion: nil)
+    }
+    
+    @objc func deleteThisDiary() {
+        managedContext.delete(diary)
+        do {
+            try managedContext.save()
+        } catch _ {
+            
+        }
+        hideDiary()
+    }
+    
+    func hideDiary() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
 
+extension DiaryViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
